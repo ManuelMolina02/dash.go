@@ -9,7 +9,7 @@ export function Logo() {
       w='64'
     >
       dash
-      <Text as='span' color='pink.500' mx='1'>.</Text>
+      <Text as='span' color='purple.500' mx='1'>.</Text>
       go
     </Text>
   )

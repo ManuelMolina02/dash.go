@@ -40,7 +40,7 @@ export default function CreateUser() {
                 <Button as='a' colorScheme={'whiteAlpha'}>Cancelar</Button>
               </Link>
 
-              <Button colorScheme={'pink'}>Salvar</Button>
+              <Button colorScheme={'purple'}>Salvar</Button>
             </HStack>
           </Flex>
 

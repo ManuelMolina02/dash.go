@@ -16,7 +16,7 @@ export default function SignIn() {
 
         <Input name='password' type='password' label='Senha' />
 
-        <Button type="submit" mt='6' size='lg' colorScheme='pink'  >
+        <Button type="submit" mt='6' size='lg' colorScheme='purple'  >
           Entrar
         </Button>
 

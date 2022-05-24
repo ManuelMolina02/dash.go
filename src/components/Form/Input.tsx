@@ -19,7 +19,7 @@ export function Input({ name, label, ...rest }: InputProps) {
       <ChakraInput
         name={name}
         id={name}
-        focusBorderColor='pink.500'
+        focusBorderColor='purple.500'
         bgColor='gray.900'
         variant={'filled'}
         _hover={{ bg: 'gray.900' }}
