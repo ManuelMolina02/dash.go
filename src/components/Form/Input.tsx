@@ -1,15 +1,17 @@
 import { FormControl, FormLabel, Input as ChakraInput, InputProps as ChakraInputProps } from "@chakra-ui/react"
+import { forwardRef } from "react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
 
 interface InputProps extends ChakraInputProps {
   name: string;
+  valueInput: UseFormRegister<FieldValues>
   label?: string;
 }
 
-export function Input({ name, label, ...rest }: InputProps) {
+export function Input({ name, label, valueInput, ...rest }: InputProps) {
   return (
     <FormControl>
-
       {
         !!label &&
         <FormLabel htmlFor={name}>
@@ -24,8 +26,10 @@ export function Input({ name, label, ...rest }: InputProps) {
         variant={'filled'}
         _hover={{ bg: 'gray.900' }}
         size='lg'
+        {...valueInput(name)}
         {...rest}
       />
     </FormControl>
   )
 }
+
