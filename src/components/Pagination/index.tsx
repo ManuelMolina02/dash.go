@@ -2,6 +2,8 @@ import { Stack, HStack, Box } from '@chakra-ui/react'
 import { PaginationItem } from './PaginationItem'
 
 export function Pagination() {
+
+
   return (
     <Stack
       direction={['column', 'row']} spacing={6} mt='8'

@@ -19,7 +19,8 @@ export function Header() {
     <Flex
       as='header' align='center'
       w='100%' h='20' maxW={1480}
-      mx='auto' px={6} mt={4}
+      mx='auto' px={6}
+      pt={5}
     >
       {
         !isWideVersion && (

@@ -1,6 +1,7 @@
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
 import { cloneElement, ReactElement } from "react";
+import { useTheme } from "../../contexts/DefineTheme";
 
 interface ActiveLinkProps extends LinkProps {
   children: ReactElement;
@@ -8,7 +9,7 @@ interface ActiveLinkProps extends LinkProps {
 }
 
 export function ActiveLink({ children, shouldMatchExactHref = false, ...rest }: ActiveLinkProps) {
-
+  const { themeDefined } = useTheme();
   const { asPath } = useRouter();
   let isActive = false;
 
@@ -23,7 +24,7 @@ export function ActiveLink({ children, shouldMatchExactHref = false, ...rest }: 
   return (
     <Link {...rest}>
       {cloneElement(children, {
-        color: isActive ? 'purple.300' : 'gray.50',
+        color: isActive ? themeDefined.colorActive : themeDefined.color,
       })}
     </Link>
   )

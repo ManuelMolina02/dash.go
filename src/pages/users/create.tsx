@@ -1,13 +1,12 @@
-import { Box, Button, Divider, Flex, Heading, HStack, SimpleGrid, useToast, VStack } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, Heading, HStack, ScaleFade, SimpleGrid, useToast, VStack } from "@chakra-ui/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../../components/Form/Input";
 
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
-
-
-
+import { useTheme } from "../../contexts/DefineTheme";
 
 interface CreateUserFormData {
   name: string;
@@ -65,57 +64,71 @@ export default function CreateUser() {
 
       return
     }
+
     if (values.password !== values.password_confirmation) {
       toast({
         title: `As senhas não coincidem`,
         status: 'warning',
       })
-
       return
     }
 
   }
 
+  const { themeDefined } = useTheme()
+
+  const [renderAnimation, setRenderAnimation] = useState(false)
+
+  useEffect(() => {
+    setRenderAnimation(true)
+  }, [])
 
   return (
-    <Box>
+    <Box bg={themeDefined.bg} h='100vh' transition={'.25s ease-in-out '}>
       <Header />
-      <Flex w='100%' maxW={1480} mt='6' mx='auto' px='6'>
+      <Flex w='100%' maxW={1480} mt='6' mx='auto' px='6' >
         <Sidebar />
-        <Box as='form' onSubmit={handleSubmit(handleCreateUser)}
-          flex='1' p={[6, 8]} bg='gray.800'
-          borderRadius={8}
-        >
-          <Heading size='lg' fontWeight='normal'>
-            Criar novo usuário
-          </Heading>
 
-          <Divider my='6' borderColor={'gray.700'} />
+        <ScaleFade in={renderAnimation} initialScale={.8} delay={.175} unmountOnExit >
 
-          <VStack spacing={8}>
-            <SimpleGrid minChildWidth={'240px'} spacing={[6, 8]} w='100%'>
-              <Input name="name" label="Nome completo" valueInput={register} />
-              <Input name="email" label="E-mail" valueInput={register} />
-            </SimpleGrid>
+          <Box as='form' onSubmit={handleSubmit(handleCreateUser)}
+            flex='1' p={[6, 8]} bg={themeDefined.bgCards}
+            borderRadius={8}
+            w={'83vw'}
+            h={'80vh'}
+            maxW={'1220px'}
+          >
+            <Heading size='lg' fontWeight='normal'>
+              Criar novo usuário
+            </Heading>
 
-            <SimpleGrid minChildWidth={'240px'} spacing={[6, 8]} w='100%'>
-              <Input name="password" type={'password'} label="Senha" valueInput={register} />
-              <Input name="passwordConfirmation" type={'password'} label="Confirmação senha" valueInput={register} />
-            </SimpleGrid>
-          </VStack>
+            <Divider my='6' borderColor={'gray.700'} />
 
-          <Flex mt='8' justify={'flex-end'}>
-            <HStack spacing={'4'}>
+            <VStack spacing={8}>
+              <SimpleGrid minChildWidth={'240px'} spacing={[6, 8]} w='100%'>
+                <Input name="name" label="Nome completo" valueInput={register} />
+                <Input name="email" label="E-mail" valueInput={register} />
+              </SimpleGrid>
 
-              <Link href={'/users'} passHref>
-                <Button as='a' colorScheme={'whiteAlpha'}>Cancelar</Button>
-              </Link>
+              <SimpleGrid minChildWidth={'240px'} spacing={[6, 8]} w='100%'>
+                <Input name="password" type={'password'} label="Senha" valueInput={register} />
+                <Input name="passwordConfirmation" type={'password'} label="Confirmação senha" valueInput={register} />
+              </SimpleGrid>
+            </VStack>
 
-              <Button colorScheme={'purple'} isLoading={formState.isSubmitting} type='submit'>Salvar</Button>
-            </HStack>
-          </Flex>
+            <Flex mt='8' justify={'flex-end'}>
+              <HStack spacing={'4'}>
 
-        </Box>
+                <Link href={'/users'} passHref>
+                  <Button as='a' colorScheme={'whiteAlpha'}>Cancelar</Button>
+                </Link>
+
+                <Button bg={themeDefined.bgActive} _hover={{ filter: 'brightness(1.2)' }} isLoading={formState.isSubmitting} type='submit'>Salvar</Button>
+              </HStack>
+            </Flex>
+
+          </Box>
+        </ScaleFade>
       </Flex>
     </Box>
   )

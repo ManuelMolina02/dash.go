@@ -1,0 +1,102 @@
+export const themes = {
+  colors: [
+    {
+      name: "purple",
+      match: ["dark", "light"],
+      primary: "#6B46C1",
+      secondary: "#553C9A",
+      colorSubtitle: "#797d9a",
+      colorActive: "purple.400",
+      colorBtnActive: "gray.50",
+    },
+    {
+      name: "green",
+      match: ["dark", "purple"],
+      primary: "#48BB78",
+      secondary: "#38A169",
+      colorSubtitle: "#2F855A",
+      colorActive: "purple.400",
+      colorBtnActive: "gray.50",
+    },
+    {
+      name: "orange",
+      match: ["dark", "light", "purple"],
+      primary: "#ED8936",
+      secondary: "#DD6B20",
+      colorSubtitle: "#797d9a",
+      colorActive: "purple.400",
+      colorBtnActive: "gray.50",
+    },
+    {
+      name: "cyan",
+      match: ["dark", "light", "purple"],
+      primary: "#00B5D8",
+      secondary: "#0987A0",
+      colorSubtitle: "#797d9a",
+      colorActive: "purple.400",
+      colorBtnActive: "gray.50",
+    },
+    {
+      name: "teal",
+      match: ["dark", "purple"],
+      primary: "#4FD1C5",
+      secondary: "#285E61",
+      colorSubtitle: "#797d9a",
+      colorActive: "purple.400",
+      colorBtnActive: "gray.50",
+    },
+    {
+      name: "pink",
+      match: ["dark"],
+      primary: "#ED64A6",
+      secondary: "#B83280",
+      colorSubtitle: "#797d9a",
+      colorActive: "purple.400",
+      colorBtnActive: "gray.50",
+    },
+  ],
+  bg: {
+    dark: {
+      bg: "#181B23",
+      bgCards: "#1F2029",
+      bgActive: "purple.500",
+
+      color: "white",
+      colorTitle: "#797d9a",
+      colorSubtitle: "#797d9a",
+      colorActive: "purple.400",
+      colorBtnActive: "gray.50",
+
+      bgChart: "#6B46C1",
+      colorChart: "#553C9A",
+    },
+    light: {
+      bg: "#e5e5e5",
+      bgCards: "#f7f7f7",
+      bgActive: "purple.600",
+
+      color: "#A0AEC0",
+      colorTitle: "#797d9a",
+      colorSubtitle: "#797d9a",
+      colorActive: "purple.600",
+      colorBtnActive: "gray.50",
+
+      bgChart: "#805AD5",
+      colorChart: "#6B46C1",
+    },
+    purple: {
+      bg: "#44337A",
+      bgCards: "#322659",
+      bgActive: "orange.500",
+
+      color: "#F7FAFC",
+      colorTitle: "#797d9a",
+      colorSubtitle: "#797d9a",
+      colorActive: "#f59746",
+      colorBtnActive: "gray.50",
+
+      bgChart: "#f59746",
+      colorChart: "#DD6B20",
+    },
+  },
+};

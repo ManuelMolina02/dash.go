@@ -2,6 +2,7 @@ import { Button, Flex, useToast, VStack } from '@chakra-ui/react'
 import { Input } from '../components/Form/Input'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useRouter } from 'next/router';
+import { useTheme } from '../contexts/DefineTheme';
 
 type SignInFormData = {
   email: string;
@@ -22,8 +23,12 @@ export default function SignIn() {
 
   })
 
+  const { themeDefined } = useTheme()
+
+
   const handleSignIn: SubmitHandler<SignInFormData> = async (values, event) => {
     await new Promise(resolve => setTimeout(resolve, 2000))
+
 
     for (let key in values) {
       if (values[key] === '') {
@@ -57,7 +62,7 @@ export default function SignIn() {
       >
         <VStack
           as='form' width='100%' maxW={360} p={8} spacing={6}
-          bg='gray.800' borderRadius={8}
+          bg={themeDefined.bgCards} borderRadius={8}
           autoComplete='off'
           onSubmit={handleSubmit(handleSignIn)}
         >

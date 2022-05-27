@@ -1,6 +1,7 @@
 import { FormControl, FormLabel, Input as ChakraInput, InputProps as ChakraInputProps } from "@chakra-ui/react"
 import { forwardRef } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
+import { useTheme } from "../../contexts/DefineTheme";
 
 
 interface InputProps extends ChakraInputProps {
@@ -10,11 +11,12 @@ interface InputProps extends ChakraInputProps {
 }
 
 export function Input({ name, label, valueInput, ...rest }: InputProps) {
+  const { themeDefined } = useTheme()
   return (
     <FormControl>
       {
         !!label &&
-        <FormLabel htmlFor={name}>
+        <FormLabel color={themeDefined.color} htmlFor={name}>
           {label}
         </FormLabel>
       }
@@ -22,7 +24,8 @@ export function Input({ name, label, valueInput, ...rest }: InputProps) {
         name={name}
         id={name}
         focusBorderColor='purple.500'
-        bgColor='gray.900'
+        bgColor={themeDefined.bg}
+
         variant={'filled'}
         _hover={{ bg: 'gray.900' }}
         size='lg'

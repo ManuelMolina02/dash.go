@@ -1,4 +1,5 @@
 import { Button } from "@chakra-ui/react";
+import { useTheme } from "../../contexts/DefineTheme";
 
 interface PaginationItemProps {
   number: number
@@ -7,17 +8,21 @@ interface PaginationItemProps {
 
 export function PaginationItem({ isCurrent = false, number }: PaginationItemProps) {
 
+  const { themeDefined } = useTheme();
+
   if (isCurrent) {
     return (
       <Button
         size={'sm'}
         fontSize='xs'
         w='4'
-        colorScheme={'purple'}
         disabled
         _disabled={{
-          bg: 'purple.500',
-          cursor: 'default',
+          bg: themeDefined.bgActive,
+        }}
+        _hover={{
+          filter: 'brightness(1.2)',
+
         }}
       >
         {number}
@@ -32,10 +37,9 @@ export function PaginationItem({ isCurrent = false, number }: PaginationItemProp
       size={'sm'}
       fontSize='xs'
       w='4'
-      bg={'gray.700'}
+      bg={themeDefined.bg}
       _hover={{
-        bg: 'gray.500',
-        cursor: 'default',
+        filter: 'brightness(1.2)',
       }}
     >
       {number}
