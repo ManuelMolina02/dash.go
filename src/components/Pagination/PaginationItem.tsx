@@ -8,7 +8,7 @@ interface PaginationItemProps {
 
 export function PaginationItem({ isCurrent = false, number }: PaginationItemProps) {
 
-  const { themeDefined } = useTheme();
+  const { theme } = useTheme();
 
   if (isCurrent) {
     return (
@@ -18,11 +18,12 @@ export function PaginationItem({ isCurrent = false, number }: PaginationItemProp
         w='4'
         disabled
         _disabled={{
-          bg: themeDefined.bgActive,
+          bg: theme.color.tertiary,
+          color: theme.bg.contrastLight,
         }}
+
         _hover={{
           filter: 'brightness(1.2)',
-
         }}
       >
         {number}
@@ -37,7 +38,8 @@ export function PaginationItem({ isCurrent = false, number }: PaginationItemProp
       size={'sm'}
       fontSize='xs'
       w='4'
-      bg={themeDefined.bg}
+      bg={theme.bg.primary}
+      color={theme.color.contrastLight}
       _hover={{
         filter: 'brightness(1.2)',
       }}

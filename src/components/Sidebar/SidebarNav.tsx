@@ -1,6 +1,5 @@
 import { Stack } from "@chakra-ui/react";
 import { RiContactsLine, RiDashboardLine, RiGitMergeLine, RiInputMethodLine } from "react-icons/ri";
-import { AiOutlineAppstoreAdd } from 'react-icons/ai'
 import { NavLink } from "./NavLink";
 import { NavSection } from "./NavSection";
 import { Accordion } from "../Accordion";

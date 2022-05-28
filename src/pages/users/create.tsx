@@ -75,7 +75,7 @@ export default function CreateUser() {
 
   }
 
-  const { themeDefined } = useTheme()
+  const { theme } = useTheme()
 
   const [renderAnimation, setRenderAnimation] = useState(false)
 
@@ -84,7 +84,7 @@ export default function CreateUser() {
   }, [])
 
   return (
-    <Box bg={themeDefined.bg} h='100vh' transition={'.25s ease-in-out '}>
+    <Box bg={theme.bg.primary} h='100vh' transition={'.25s ease-in-out '}>
       <Header />
       <Flex w='100%' maxW={1480} mt='6' mx='auto' px='6' >
         <Sidebar />
@@ -92,7 +92,7 @@ export default function CreateUser() {
         <ScaleFade in={renderAnimation} initialScale={.8} delay={.175} unmountOnExit >
 
           <Box as='form' onSubmit={handleSubmit(handleCreateUser)}
-            flex='1' p={[6, 8]} bg={themeDefined.bgCards}
+            flex='1' p={[6, 8]} bg={theme.bg.secondary}
             borderRadius={8}
             w={'83vw'}
             h={'80vh'}
@@ -104,7 +104,7 @@ export default function CreateUser() {
 
             <Divider my='6' borderColor={'gray.700'} />
 
-            <VStack spacing={8}>
+            <VStack spacing={8} >
               <SimpleGrid minChildWidth={'240px'} spacing={[6, 8]} w='100%'>
                 <Input name="name" label="Nome completo" valueInput={register} />
                 <Input name="email" label="E-mail" valueInput={register} />
@@ -123,7 +123,7 @@ export default function CreateUser() {
                   <Button as='a' colorScheme={'whiteAlpha'}>Cancelar</Button>
                 </Link>
 
-                <Button bg={themeDefined.bgActive} _hover={{ filter: 'brightness(1.2)' }} isLoading={formState.isSubmitting} type='submit'>Salvar</Button>
+                <Button color={theme.color.contrastLight} bg={theme.color.tertiary} _hover={{ filter: 'brightness(1.2)' }} isLoading={formState.isSubmitting} type='submit'>Salvar</Button>
               </HStack>
             </Flex>
 

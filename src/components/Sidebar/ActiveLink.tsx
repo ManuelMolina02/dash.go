@@ -9,7 +9,7 @@ interface ActiveLinkProps extends LinkProps {
 }
 
 export function ActiveLink({ children, shouldMatchExactHref = false, ...rest }: ActiveLinkProps) {
-  const { themeDefined } = useTheme();
+  const { theme } = useTheme();
   const { asPath } = useRouter();
   let isActive = false;
 
@@ -24,7 +24,7 @@ export function ActiveLink({ children, shouldMatchExactHref = false, ...rest }: 
   return (
     <Link {...rest}>
       {cloneElement(children, {
-        color: isActive ? themeDefined.colorActive : themeDefined.color,
+        color: isActive ? theme.color.primary : theme.bg.contrastLight,
       })}
     </Link>
   )

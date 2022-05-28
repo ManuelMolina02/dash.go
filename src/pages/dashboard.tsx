@@ -19,13 +19,12 @@ const series = [
 export default function Dashboard() {
 
 
-  const { themeDefined, newTheme } = useTheme()
+  const { theme, variablesTheme } = useTheme()
+
   //defina o tema no body
   const [renderAnimation, setRenderAnimation] = useState(false)
 
-
-
-  console.log('newTheme: ', newTheme);
+  // console.log('newTheme: ', newTheme);
 
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export default function Dashboard() {
       zoom: {
         enabled: false,
       },
-      foreColor: theme.colors.gray[500],
+      foreColor: '#616480',
 
     },
     grid: {
@@ -50,7 +49,7 @@ export default function Dashboard() {
 
     dataLabels: {
       style: {
-        colors: [newTheme.color.secondary ? newTheme.color.secondary : themeDefined.colorChart],
+        colors: [theme.color.secondary ? theme.color.secondary : theme.bg.secondary],
       },
 
     },
@@ -58,16 +57,16 @@ export default function Dashboard() {
     tooltip: {
       theme: "dark",
       marker: {
-        fillColors: [newTheme.color.secondary ? newTheme.color.secondary : themeDefined.colorChart],
+        fillColors: [theme.color.secondary ? theme.color.secondary : theme.bg.secondary],
       }
     },
     xaxis: {
       type: 'datetime',
       axisBorder: {
-        color: theme.colors.gray[600],
+        color: '#4B4D63',
       },
       axisTicks: {
-        color: theme.colors.gray[600],
+        color: '#4B4D63',
       },
       categories: [
         '2022-04-20T00:00:00.000Z',
@@ -90,17 +89,16 @@ export default function Dashboard() {
         opacityTo: .3,
 
       },
-      colors: [newTheme.color.primary ? newTheme.color.primary : theme.colors.purple[500]],
+      colors: [theme.color.primary ? theme.color.primary : theme.colors.purple[500]],
     },
     stroke: {
-      colors: [newTheme.color.primary ? newTheme.color.primary : theme.colors.purple[500]]
+      colors: [theme.color.primary ? theme.color.primary : theme.colors.purple[500]]
     }
 
   }
 
-
   return (
-    <Flex direction={'column'} h='100vh' bg={themeDefined.bg} color={themeDefined.color} transition={'.25s ease-in-out '}>
+    <Flex direction={'column'} h='100vh' bg={theme.bg.primary} color={theme.color.primary} transition={'.25s ease-in-out '}>
       <Header />
 
       <Flex w='100%' maxW={1480} my='6' mx='auto' px='6' >
@@ -109,18 +107,18 @@ export default function Dashboard() {
         <ScaleFade in={renderAnimation} initialScale={.8} delay={.175} unmountOnExit  >
           <SimpleGrid w={'82vw'} maxW={'1220px'} flex='1' gap='4' minChildWidth={'420px'} alignContent='flex-start'>
 
-            <Box p={[6, 8]} pb='4' bg={themeDefined.bgCards} borderRadius='8'>
-              <Text fontSize={'lg'} mb='4'>
+            <Box p={[6, 8]} pb='4' bg={theme.bg.secondary} borderRadius='8'>
+              <Text fontSize={'lg'} mb='4' color={theme.bg.contrastLight}>
                 Inscritos da semana
               </Text>
-              <Chart options={options} series={series} type='area' height={160} />
+              <Chart key={variablesTheme.update} options={options} series={series} type='area' height={160} />
             </Box>
 
-            <Box p={[6, 8]} bg={themeDefined.bgCards} borderRadius='8'>
-              <Text fontSize={'lg'} mb='4' >
+            <Box p={[6, 8]} bg={theme.bg.secondary} borderRadius='8'>
+              <Text fontSize={'lg'} mb='4' color={theme.bg.contrastLight}>
                 Taxa de abertura
               </Text>
-              <Chart options={options} series={series} type='area' height={160} />
+              <Chart key={variablesTheme.update} options={options} series={series} type='area' height={160} />
             </Box>
 
           </SimpleGrid>

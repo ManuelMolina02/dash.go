@@ -23,7 +23,7 @@ export default function SignIn() {
 
   })
 
-  const { themeDefined } = useTheme()
+  const { theme } = useTheme()
 
 
   const handleSignIn: SubmitHandler<SignInFormData> = async (values, event) => {
@@ -62,7 +62,7 @@ export default function SignIn() {
       >
         <VStack
           as='form' width='100%' maxW={360} p={8} spacing={6}
-          bg={themeDefined.bgCards} borderRadius={8}
+          bg={theme.bg.secondary} borderRadius={8}
           autoComplete='off'
           onSubmit={handleSubmit(handleSignIn)}
         >

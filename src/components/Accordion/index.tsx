@@ -7,10 +7,10 @@ import { RadioCards2 } from "../RadioCard2";
 
 
 export function Accordion() {
-  const { themeDefined, theme, setTheme, colorsMatch, color, setColor } = useTheme()
+  const { theme, variablesTheme } = useTheme()
 
 
-  const options = [...colorsMatch].map(color => color.name)
+  const options = [...variablesTheme.colorsMatch].map(color => color.name)
 
 
   return (
@@ -18,7 +18,8 @@ export function Accordion() {
       <AccordionItem boxShadow={'transparent'} borderColor={'transparent'} >
 
         <AccordionButton
-          _expanded={{ color: themeDefined.colorActive, fontWeight: 'bold' }}
+          color={theme.bg.contrastColor}
+          _expanded={{ color: theme.color.primary, fontWeight: 'bold' }}
 
           _focus={{ color: 'none' }}
           _hover={{ textDecor: 'underline' }}
@@ -38,8 +39,8 @@ export function Accordion() {
         <AccordionPanel pb={4}>
           <RadioCards
             options={['dark', 'light', 'purple']}
-            handleData={setTheme}
-            defaultValue={theme} />
+            handleData={variablesTheme.setState.setBackground}
+            defaultValue={variablesTheme.state.background} />
         </AccordionPanel>
       </AccordionItem>
 
@@ -47,8 +48,8 @@ export function Accordion() {
       <AccordionItem boxShadow={'transparent'} borderColor={'transparent'} >
 
         <AccordionButton
-          _expanded={{ color: themeDefined.colorActive, fontWeight: 'bold' }}
-
+          color={theme.bg.contrastColor}
+          _expanded={{ color: theme.color.primary, fontWeight: 'bold' }}
           _focus={{ color: 'none' }}
           _hover={{ textDecor: 'underline' }}
           px={0}>
@@ -67,8 +68,10 @@ export function Accordion() {
         <AccordionPanel pb={4}>
           <RadioCards2
             options={options}
-            handleData={setColor}
-            defaultValue={color} />
+            handleData={variablesTheme.setState.setColor}
+            defaultValue={variablesTheme.state.color}
+
+          />
         </AccordionPanel>
       </AccordionItem>
 

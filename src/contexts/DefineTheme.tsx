@@ -2,103 +2,110 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { themes } from '../styles/themes';
 
+//definindo uma interface para o contexto
 interface DefineThemeProps {
   children: ReactNode
 }
 
-
-
-
+//criando um contexto
 export const DefineThemeContext = createContext({} as any);
 
-
+//criando um provider
 export function DefineThemeProvider({ children }: DefineThemeProps) {
-  const [themeDefined, setThemeDefined] = useState({ ...themes.bg.dark });
-  const [colorDefined, setColorDefined] = useState({ ...themes.colors });
 
-
-
-  const [newTheme, setNewTheme] = useState({
-    bg: {},
-    color: {},
-  });
-
-  const [colorsMatch, setColorsMatch] = useState([]);
-
-  const [theme, setTheme] = useState('dark');
+  //definindo o tema e color default
+  const [background, setBackground] = useState('dark');
   const [color, setColor] = useState('purple');
 
-  useEffect(() => {
-    if (theme === 'dark') {
-      setThemeDefined({ ...themes.bg.dark });
+  //cores que dão match com o tema
+  const [colorsMatch, setColorsMatch] = useState([]);
 
-    } else if (theme === 'light') {
-      setThemeDefined({ ...themes.bg.light });
-    } else if (theme === 'purple') {
-      setThemeDefined({ ...themes.bg.purple });
+  //variavel de atualização
+  const [update, setUpdate] = useState('');
+
+  //tema definido
+  const [theme, setTheme] = useState({
+    bg: themes.bg[0],
+    color: themes.colors[0],
+  });
+
+
+  useEffect(() => {
+    const newTheme = themes.bg.find((item) => item.name === background);
+    const newColor = colorsMatch.find(data => data.name === color)
+
+    if (newTheme.name !== 'purple') {
+      setTheme({
+        bg: newTheme ? newTheme : themes.bg[0],
+        color: themes.colors[0],
+      })
+    } else {
+      setTheme({
+        bg: newTheme ? newTheme : themes.bg[0],
+        color: themes.colors[2],
+      })
     }
 
-  }, [theme])
+
+
+    setUpdate(new Date().toString());
+
+  }, [background])
+
+  useEffect(() => {
+    const newTheme = themes.bg.find((item) => item.name === background);
+    const newColor = colorsMatch.find(data => data.name === color)
+
+    setTheme({
+      bg: newTheme ? newTheme : themes.bg[0],
+      color: newColor ? newColor : themes.colors[0],
+    })
+
+    setUpdate(new Date().toString());
+
+  }, [color])
 
 
   useEffect(() => {
-
+    //retornando todas as cores que tem match com o tema definido
     const selectMatchs = themes.colors.map(data => {
-      const validateMatch = Object.values(data.match).map(data => data.includes(theme) ? 1 : 0)
+      const validateMatch = Object.values(data.match).map(data => data.includes(background) ? 1 : 0)
       const validation = validateMatch.some(data => data === 1)
-
 
       return {
         ...data,
-        playMatch: validation
+        playMatch: validation,
       }
     })
 
     const selectMatchsColor = selectMatchs.filter(data => data.playMatch === true)
-
     setColorsMatch(selectMatchsColor)
 
-  }, [theme])
+  }, [background])
 
-  useEffect(() => {
-    const newColor = colorsMatch.find(data => data.name === color)
-
-    setNewTheme({
-      bg: {
-        ...themeDefined
-      },
-      color: {
-        ...newColor
-      }
-    })
-
-  }, [color, theme])
-
-
-
+  //preparando constantes para envio
+  const variablesTheme = {
+    state: {
+      background,
+      color,
+    },
+    setState: {
+      setBackground,
+      setColor
+    },
+    colorsMatch,
+    update
+  }
 
   return (
-    <DefineThemeContext.Provider value={{ themeDefined, setTheme, theme, colorsMatch, setColor, color, newTheme }}>
+    <DefineThemeContext.Provider value={{ variablesTheme, theme }
+    }>
       {children}
-    </DefineThemeContext.Provider>
+    </DefineThemeContext.Provider >
   );
-
 }
 
 export function useTheme() {
   const context = useContext(DefineThemeContext);
-
   return context
 }
-/*
-
-export const DefineThemeProvider = ({ children }) => {
-  const { theme } = useContext(DefineThemeContext);
-  const themeDefined = useDefineTheme({ theme });
-
-  return (
-    <DefineThemeContext.Provider value={themeDefined}>
-      {children}
-    </DefineThemeContext.Provider>
-  );
-};*/

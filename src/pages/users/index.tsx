@@ -24,10 +24,10 @@ export default function UserList() {
   }, [])
 
 
-  const { themeDefined } = useTheme()
+  const { theme } = useTheme()
 
   return (
-    <Box bg={themeDefined.bg} color={themeDefined.color} h={'100vh'} transition={'.25s ease-in-out '}>
+    <Box bg={theme.bg.primary} color={theme.color.primary} h={'100vh'} transition={'.25s ease-in-out '}>
       <Header />
 
       <Flex w='100%' maxW={1480} mt='6' mx='auto' px={[4, 4, 6]} >
@@ -35,7 +35,7 @@ export default function UserList() {
         <Sidebar />
 
         <ScaleFade in={renderAnimation} initialScale={.8} delay={.175} unmountOnExit >
-          <Box w={'82vw'} maxW={'1220px'} flex='1' p='8' bg={themeDefined.bgCards} borderRadius={8} >
+          <Box w={'82vw'} maxW={'1220px'} flex='1' p='8' bg={theme.bg.secondary} color={theme.color.contrastLight} borderRadius={8} >
 
             <Flex mb={8} justify='space-between' align='center'>
 
@@ -46,12 +46,12 @@ export default function UserList() {
               <Link href={'/users/create'} passHref>
                 <Button
                   as='a' size='sm' fontSize={'sm'}
-                  bg={themeDefined.bgActive}
+                  bg={theme.color.tertiary}
                   _hover={{
                     filter: 'brightness(.9)',
                   }}
 
-                  color={themeDefined.colorBtnActive}
+                  color={theme.color.contrastLight}
 
                   leftIcon={<Icon as={RiAddLine} fontSize='20' />}
                 >
@@ -62,14 +62,14 @@ export default function UserList() {
             </Flex>
 
             <Table colorScheme='whiteAlpha' overflowY={'scroll'}  >
-              <Thead>
+              <Thead >
                 <Tr>
                   <Th px={[4, 4, 6]} color='gray.300' width={'8'}>
                     <Checkbox colorScheme={'purple'} />
                   </Th>
 
-                  <Th>Usuário</Th>
-                  {isWideVersion && <Th>Data de cadastro</Th>}
+                  <Th color={theme.color.contrastDark}>Usuário</Th>
+                  {isWideVersion && <Th color={theme.color.contrastDark}>Data de cadastro</Th>}
                   <Th></Th>
 
                 </Tr>

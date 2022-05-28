@@ -11,12 +11,12 @@ interface InputProps extends ChakraInputProps {
 }
 
 export function Input({ name, label, valueInput, ...rest }: InputProps) {
-  const { themeDefined } = useTheme()
+  const { theme } = useTheme()
   return (
     <FormControl>
       {
         !!label &&
-        <FormLabel color={themeDefined.color} htmlFor={name}>
+        <FormLabel color={theme.color.contrastLight} htmlFor={name}>
           {label}
         </FormLabel>
       }
@@ -24,7 +24,7 @@ export function Input({ name, label, valueInput, ...rest }: InputProps) {
         name={name}
         id={name}
         focusBorderColor='purple.500'
-        bgColor={themeDefined.bg}
+        bgColor={theme.bg.primary}
 
         variant={'filled'}
         _hover={{ bg: 'gray.900' }}

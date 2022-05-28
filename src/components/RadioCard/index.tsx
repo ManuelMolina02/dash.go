@@ -9,7 +9,7 @@ interface RadioCardsProps {
 
 // 1. Create a component that consumes the `useRadio` hook
 function RadioCard(props) {
-  const { themeDefined } = useTheme()
+  const { theme } = useTheme()
   const { getInputProps, getCheckboxProps } = useRadio(props)
 
   const input = getInputProps()
@@ -27,10 +27,12 @@ function RadioCard(props) {
         borderWidth='1px'
         borderRadius='md'
         boxShadow='md'
+        color={theme.bg.contrastColor}
+
         _checked={{
-          bg: themeDefined.bgActive,
-          color: themeDefined.colorBtnActive,
-          borderColor: 'gray.600',
+          bg: theme.color.secondary,
+          color: theme.bg.contrastColor,
+          borderColor: 'transparent',
         }}
 
         px={3}
