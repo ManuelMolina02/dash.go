@@ -21,9 +21,11 @@ function RadioCard(props) {
       <Box
         {...checkbox}
         w={'60px'}
+        me={'6px'}
+        py={1}
         fontSize={'12px'}
-
         textAlign={'center'}
+
         cursor='pointer'
         borderWidth='1px'
         borderRadius='md'
@@ -34,10 +36,8 @@ function RadioCard(props) {
           bg: theme.color.secondary,
           color: theme.bg.contrastDark,
           borderColor: 'transparent',
+          cursor: 'not-allowed',
         }}
-
-        me={'6px'}
-        py={1}
       >
         {props.children}
       </Box>
@@ -48,19 +48,18 @@ function RadioCard(props) {
 // Step 2: Use the `useRadioGroup` hook to control a group of custom radios.
 export function RadioCards2({ options, handleData, defaultValue }: RadioCardsProps) {
 
+  const { theme } = useTheme()
+
   const { getRootProps, getRadioProps } = useRadioGroup({
-    name: 'color',
+    name: defaultValue,
     defaultValue,
     onChange: handleData,
   })
-
-  const { theme } = useTheme()
 
   const group = getRootProps()
 
   return (
     <VStack
-
       display={'grid'}
       gridAutoFlow={'column'}
       gridTemplateRows={'1fr 1fr 1fr'}
@@ -72,7 +71,7 @@ export function RadioCards2({ options, handleData, defaultValue }: RadioCardsPro
       {options.map((value) => {
         const radio = getRadioProps({ value })
         return (
-          <RadioCard key={value} {...radio} color={theme.bg.contrastColor}>
+          <RadioCard key={value} {...radio} color={theme.bg.contrastColor} >
             {value}
           </RadioCard>
         )

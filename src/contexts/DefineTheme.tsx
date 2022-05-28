@@ -25,15 +25,33 @@ export function DefineThemeProvider({ children }: DefineThemeProps) {
     color: themes.colors[0],
   });
 
-  useEffect(() => {
-    const newTheme = themes.bg.find((item) => item.name === background);
 
+  //função que define o tema
+  const newTheme = themes.bg.find((item) => item.name === background);
+
+  //função que define a cor
+  const newColor = colorsMatch.find(data => data.name === color)
+
+  //retornando todas as cores que tem match com o tema definido
+  const selectMatchs = themes.colors.map(data => {
+    const validateMatch = Object.values(data.match).map(data => data.includes(background) ? 1 : 0)
+    const validation = validateMatch.some(data => data === 1)
+
+    return {
+      ...data,
+      playMatch: validation,
+    }
+  })
+
+  const selectMatchsColor = selectMatchs.filter(data => data.playMatch === true)
+
+  //definindo o tema
+  useEffect(() => {
     if (newTheme.name !== 'purple') {
       setTheme({
         bg: newTheme ? newTheme : themes.bg[0],
         color: themes.colors[0],
       })
-
     } else {
       setTheme({
         bg: newTheme ? newTheme : themes.bg[0],
@@ -41,12 +59,14 @@ export function DefineThemeProvider({ children }: DefineThemeProps) {
       })
     }
 
+    setColor('')
+
   }, [background])
 
-  useEffect(() => {
-    const newTheme = themes.bg.find((item) => item.name === background);
-    const newColor = colorsMatch.find(data => data.name === color)
 
+
+  //definindo as cores no click
+  useEffect(() => {
     setTheme({
       bg: newTheme ? newTheme : themes.bg[0],
       color: newColor ? newColor : themes.colors[0],
@@ -54,19 +74,9 @@ export function DefineThemeProvider({ children }: DefineThemeProps) {
 
   }, [color])
 
+  //definindo as cores que tem match com o tema
   useEffect(() => {
-    //retornando todas as cores que tem match com o tema definido
-    const selectMatchs = themes.colors.map(data => {
-      const validateMatch = Object.values(data.match).map(data => data.includes(background) ? 1 : 0)
-      const validation = validateMatch.some(data => data === 1)
 
-      return {
-        ...data,
-        playMatch: validation,
-      }
-    })
-
-    const selectMatchsColor = selectMatchs.filter(data => data.playMatch === true)
     setColorsMatch(selectMatchsColor)
 
   }, [background])
