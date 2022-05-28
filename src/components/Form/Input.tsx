@@ -16,7 +16,7 @@ export function Input({ name, label, valueInput, ...rest }: InputProps) {
     <FormControl>
       {
         !!label &&
-        <FormLabel color={theme.color.contrastLight} htmlFor={name}>
+        <FormLabel color={theme.bg.contrastLight} htmlFor={name}>
           {label}
         </FormLabel>
       }

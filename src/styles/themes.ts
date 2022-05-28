@@ -2,29 +2,27 @@ export const themes = {
   bg: [
     {
       name: "dark",
-      defaultColor: "",
       matchColors: ["purple", "green", "orange", "cyan", "teal", "pink"],
 
       primary: "#181B23",
       secondary: "#1F2029",
       tertiary: "#9F7AEA",
 
-      contrastColor: "#F7FAFC",
+      contrastColor: "#9F7AEA",
       contrastLight: "#EDF2F7",
       contrastDark: "#E2E8F0",
     },
     {
       name: "light",
-
       matchColors: ["purple", "orange", "cyan"],
 
       primary: "#e5e5e5",
       secondary: "#f7f7f7",
       tertiary: "purple.500",
 
-      contrastColor: "#8287a9",
+      contrastColor: "#f7f7f7",
       contrastLight: "#8287a9",
-      contrastDark: "#4A5568",
+      contrastDark: "#f7f7f7",
     },
     {
       name: "purple",
@@ -59,7 +57,7 @@ export const themes = {
 
       primary: "#48BB78",
       secondary: "#38A169",
-      tertiary: "#3C2E6B",
+      tertiary: "#2F855A",
 
       contrastColor: "#F7FAFC",
       contrastLight: "#EDF2F7",
@@ -71,11 +69,11 @@ export const themes = {
 
       primary: "#ED8936",
       secondary: "#DD6B20",
-      tertiary: "#3C2E6B",
+      tertiary: "#C05621",
 
-      contrastColor: "#F6AD55",
-      contrastLight: "#F7FAFC",
-      contrastTertiary: "#EDF2F7",
+      contrastColor: "#F7FAFC",
+      contrastLight: "#EDF2F7",
+      contrastTertiary: "#E2E8F0",
     },
     {
       name: "cyan",
@@ -83,7 +81,7 @@ export const themes = {
 
       primary: "#00B5D8",
       secondary: "#0987A0",
-      tertiary: "#3C2E6B",
+      tertiary: "#086F83",
 
       contrastColor: "#F7FAFC",
       contrastLight: "#EDF2F7",
@@ -94,8 +92,8 @@ export const themes = {
       match: ["dark", "purple"],
 
       primary: "#4FD1C5",
-      secondary: "#285E61",
-      tertiary: "#3C2E6B",
+      secondary: "#38B2AC",
+      tertiary: "#285E61",
 
       contrastColor: "#F7FAFC",
       contrastLight: "#EDF2F7",
@@ -106,8 +104,8 @@ export const themes = {
       match: ["dark"],
 
       primary: "#ED64A6",
-      secondary: "#B83280",
-      tertiary: "#3C2E6B",
+      secondary: "#D53F8C",
+      tertiary: "#B83280",
 
       contrastColor: "#F7FAFC",
       contrastLight: "#EDF2F7",

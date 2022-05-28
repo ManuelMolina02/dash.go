@@ -35,7 +35,7 @@ export default function UserList() {
         <Sidebar />
 
         <ScaleFade in={renderAnimation} initialScale={.8} delay={.175} unmountOnExit >
-          <Box w={'82vw'} maxW={'1220px'} flex='1' p='8' bg={theme.bg.secondary} color={theme.color.contrastLight} borderRadius={8} >
+          <Box w={'82vw'} maxW={'1220px'} flex='1' p='8' bg={theme.bg.secondary} color={theme.bg.contrastLight} borderRadius={8} >
 
             <Flex mb={8} justify='space-between' align='center'>
 

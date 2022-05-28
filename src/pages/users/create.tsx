@@ -98,7 +98,7 @@ export default function CreateUser() {
             h={'80vh'}
             maxW={'1220px'}
           >
-            <Heading size='lg' fontWeight='normal'>
+            <Heading color={theme.bg.contrastLight} size='lg' fontWeight='normal'>
               Criar novo usuário
             </Heading>
 

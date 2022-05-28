@@ -1,4 +1,5 @@
 import { Accordion as ChakraAccordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, HStack, Icon, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { BiPaintRoll } from "react-icons/bi";
 import { TiBrush } from 'react-icons/ti'
 import { useTheme } from "../../contexts/DefineTheme";
@@ -8,17 +9,14 @@ import { RadioCards2 } from "../RadioCard2";
 
 export function Accordion() {
   const { theme, variablesTheme } = useTheme()
-
-
   const options = [...variablesTheme.colorsMatch].map(color => color.name)
-
 
   return (
     <ChakraAccordion allowToggle w='140px'  >
       <AccordionItem boxShadow={'transparent'} borderColor={'transparent'} >
 
         <AccordionButton
-          color={theme.bg.contrastColor}
+          color={theme.bg.contrastLight}
           _expanded={{ color: theme.color.primary, fontWeight: 'bold' }}
 
           _focus={{ color: 'none' }}
@@ -48,7 +46,7 @@ export function Accordion() {
       <AccordionItem boxShadow={'transparent'} borderColor={'transparent'} >
 
         <AccordionButton
-          color={theme.bg.contrastColor}
+          color={theme.bg.contrastLight}
           _expanded={{ color: theme.color.primary, fontWeight: 'bold' }}
           _focus={{ color: 'none' }}
           _hover={{ textDecor: 'underline' }}
@@ -65,7 +63,7 @@ export function Accordion() {
           {/* <AccordionIcon /> */}
         </AccordionButton>
 
-        <AccordionPanel pb={4}>
+        <AccordionPanel pb={4} >
           <RadioCards2
             options={options}
             handleData={variablesTheme.setState.setColor}

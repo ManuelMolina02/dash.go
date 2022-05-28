@@ -5,9 +5,10 @@ import { SearchBox } from "./SearchBox";
 import { NotificationsNav } from "./NotificationsNav";
 import { useSidebarDrawer } from "../../contexts/SidebarDrawerContext";
 import { RiMenuLine } from "react-icons/ri";
+import { useTheme } from "../../contexts/DefineTheme";
 
 export function Header() {
-
+  const { theme } = useTheme()
   const { onOpen } = useSidebarDrawer()
 
   const isWideVersion = useBreakpointValue({
@@ -37,13 +38,13 @@ export function Header() {
         )
       }
 
-      <Logo />
+      <Logo color={theme.color.secondary} contrast={theme.bg.contrastLight} />
 
       {isWideVersion && <SearchBox />}
 
       <Flex align={'center'} ml='auto'>
         <NotificationsNav />
-        <Profile showProfileData={isWideVersion} />
+        <Profile showProfileData={isWideVersion} color={theme.bg.contrastLight} />
       </Flex>
 
     </Flex>

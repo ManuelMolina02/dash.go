@@ -27,11 +27,11 @@ function RadioCard(props) {
         borderWidth='1px'
         borderRadius='md'
         boxShadow='md'
-        color={theme.bg.contrastColor}
+        color={theme.bg.contrastLight}
 
         _checked={{
           bg: theme.color.secondary,
-          color: theme.bg.contrastColor,
+          color: theme.bg.contrastDark,
           borderColor: 'transparent',
         }}
 

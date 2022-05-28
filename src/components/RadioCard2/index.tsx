@@ -19,7 +19,6 @@ function RadioCard(props) {
     <Box as='label' >
       <input {...input} />
       <Box
-
         {...checkbox}
         w={'60px'}
         fontSize={'12px'}
@@ -29,11 +28,11 @@ function RadioCard(props) {
         borderWidth='1px'
         borderRadius='md'
         boxShadow='md'
-        color={theme.bg.contrastDark}
+        color={theme.bg.contrastLight}
 
         _checked={{
           bg: theme.color.secondary,
-          color: theme.bg.contrastColor,
+          color: theme.bg.contrastDark,
           borderColor: 'transparent',
         }}
 
@@ -50,7 +49,7 @@ function RadioCard(props) {
 export function RadioCards2({ options, handleData, defaultValue }: RadioCardsProps) {
 
   const { getRootProps, getRadioProps } = useRadioGroup({
-    name: 'theme',
+    name: 'color',
     defaultValue,
     onChange: handleData,
   })

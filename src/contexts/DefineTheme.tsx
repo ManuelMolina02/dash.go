@@ -12,7 +12,6 @@ export const DefineThemeContext = createContext({} as any);
 
 //criando um provider
 export function DefineThemeProvider({ children }: DefineThemeProps) {
-
   //definindo o tema e color default
   const [background, setBackground] = useState('dark');
   const [color, setColor] = useState('purple');
@@ -20,35 +19,27 @@ export function DefineThemeProvider({ children }: DefineThemeProps) {
   //cores que dão match com o tema
   const [colorsMatch, setColorsMatch] = useState([]);
 
-  //variavel de atualização
-  const [update, setUpdate] = useState('');
-
   //tema definido
   const [theme, setTheme] = useState({
     bg: themes.bg[0],
     color: themes.colors[0],
   });
 
-
   useEffect(() => {
     const newTheme = themes.bg.find((item) => item.name === background);
-    const newColor = colorsMatch.find(data => data.name === color)
 
     if (newTheme.name !== 'purple') {
       setTheme({
         bg: newTheme ? newTheme : themes.bg[0],
         color: themes.colors[0],
       })
+
     } else {
       setTheme({
         bg: newTheme ? newTheme : themes.bg[0],
         color: themes.colors[2],
       })
     }
-
-
-
-    setUpdate(new Date().toString());
 
   }, [background])
 
@@ -61,10 +52,7 @@ export function DefineThemeProvider({ children }: DefineThemeProps) {
       color: newColor ? newColor : themes.colors[0],
     })
 
-    setUpdate(new Date().toString());
-
   }, [color])
-
 
   useEffect(() => {
     //retornando todas as cores que tem match com o tema definido
@@ -93,8 +81,7 @@ export function DefineThemeProvider({ children }: DefineThemeProps) {
       setBackground,
       setColor
     },
-    colorsMatch,
-    update
+    colorsMatch
   }
 
   return (

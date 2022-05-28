@@ -19,7 +19,7 @@ export function PaginationItem({ isCurrent = false, number }: PaginationItemProp
         disabled
         _disabled={{
           bg: theme.color.tertiary,
-          color: theme.bg.contrastLight,
+          color: theme.bg.contrastDark,
         }}
 
         _hover={{
@@ -39,9 +39,12 @@ export function PaginationItem({ isCurrent = false, number }: PaginationItemProp
       fontSize='xs'
       w='4'
       bg={theme.bg.primary}
-      color={theme.color.contrastLight}
+      color={theme.bg.contrastLight}
       _hover={{
         filter: 'brightness(1.2)',
+        backgroundColor: theme.color.tertiary,
+        color: theme.bg.contrastDark,
+
       }}
     >
       {number}

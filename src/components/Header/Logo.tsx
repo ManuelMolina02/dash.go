@@ -1,18 +1,21 @@
 import { Text } from "@chakra-ui/react";
-import { useTheme } from "../../contexts/DefineTheme";
 
-export function Logo() {
-  const { theme } = useTheme();
+interface LogoProps {
+  color?: string;
+  contrast?: string;
+}
+
+export function Logo({ color, contrast }: LogoProps) {
   return (
     <Text
       fontSize={["2xl", "3xl"]}
       fontWeight='bold'
       letterSpacing={'tight'}
       w='64'
-      color={theme.bg.contrastLight}
+      color={contrast}
     >
       dash
-      <Text as='span' color={theme.color.primary} mx='1'>.</Text>
+      <Text as='span' color={color} mx='1'>.</Text>
       go
     </Text>
   )

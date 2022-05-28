@@ -24,12 +24,17 @@ export default function Dashboard() {
   //defina o tema no body
   const [renderAnimation, setRenderAnimation] = useState(false)
 
-  // console.log('newTheme: ', newTheme);
-
+  //variavel de atualização
+  const [update, setUpdate] = useState('');
 
   useEffect(() => {
     setRenderAnimation(true)
   }, [])
+
+  useEffect(() => {
+    setUpdate(new Date().toString());
+
+  }, [theme])
 
   const options: ApexOptions = {
     chart: {
@@ -49,7 +54,7 @@ export default function Dashboard() {
 
     dataLabels: {
       style: {
-        colors: [theme.color.secondary ? theme.color.secondary : theme.bg.secondary],
+        colors: [theme.color.contrastDark],
       },
 
     },
@@ -57,7 +62,7 @@ export default function Dashboard() {
     tooltip: {
       theme: "dark",
       marker: {
-        fillColors: [theme.color.secondary ? theme.color.secondary : theme.bg.secondary],
+        fillColors: [theme.color.secondary],
       }
     },
     xaxis: {
@@ -89,10 +94,10 @@ export default function Dashboard() {
         opacityTo: .3,
 
       },
-      colors: [theme.color.primary ? theme.color.primary : theme.colors.purple[500]],
+      colors: [theme.color.secondary],
     },
     stroke: {
-      colors: [theme.color.primary ? theme.color.primary : theme.colors.purple[500]]
+      colors: [theme.color.secondary],
     }
 
   }
@@ -104,21 +109,21 @@ export default function Dashboard() {
       <Flex w='100%' maxW={1480} my='6' mx='auto' px='6' >
         <Sidebar />
 
-        <ScaleFade in={renderAnimation} initialScale={.8} delay={.175} unmountOnExit  >
+        <ScaleFade in={renderAnimation} initialScale={.8} unmountOnExit  >
           <SimpleGrid w={'82vw'} maxW={'1220px'} flex='1' gap='4' minChildWidth={'420px'} alignContent='flex-start'>
 
             <Box p={[6, 8]} pb='4' bg={theme.bg.secondary} borderRadius='8'>
               <Text fontSize={'lg'} mb='4' color={theme.bg.contrastLight}>
                 Inscritos da semana
               </Text>
-              <Chart key={variablesTheme.update} options={options} series={series} type='area' height={160} />
+              <Chart key={update} options={options} series={series} type='area' height={160} />
             </Box>
 
             <Box p={[6, 8]} bg={theme.bg.secondary} borderRadius='8'>
               <Text fontSize={'lg'} mb='4' color={theme.bg.contrastLight}>
                 Taxa de abertura
               </Text>
-              <Chart key={variablesTheme.update} options={options} series={series} type='area' height={160} />
+              <Chart key={update} options={options} series={series} type='area' height={160} />
             </Box>
 
           </SimpleGrid>
