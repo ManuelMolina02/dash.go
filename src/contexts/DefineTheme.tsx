@@ -7,6 +7,35 @@ interface DefineThemeProps {
   children: ReactNode
 }
 
+interface themeProps {
+  bg: bgProps,
+  color: colorProps,
+}
+
+type bgProps = {
+  name: string,
+  defaultColor: string,
+  primary: string,
+  secondary: string,
+  tertiary: string,
+
+  contrastColor: string,
+  contrastLight: string,
+  contrastDark: string,
+}
+
+type colorProps = {
+  name: string,
+  match: string[],
+  primary: string,
+  secondary: string,
+  tertiary: string,
+
+  contrastColor: string,
+  contrastLight: string,
+  contrastDark: string,
+}
+
 //criando um contexto
 export const DefineThemeContext = createContext({} as any);
 
@@ -17,10 +46,10 @@ export function DefineThemeProvider({ children }: DefineThemeProps) {
   const [color, setColor] = useState('purple');
 
   //cores que dão match com o tema
-  const [colorsMatch, setColorsMatch] = useState([]);
+  const [colorsMatch, setColorsMatch] = useState<colorProps[]>([]);
 
   //tema definido
-  const [theme, setTheme] = useState({
+  const [theme, setTheme] = useState<themeProps>({
     bg: themes.bg[0],
     color: themes.colors[0],
   });
@@ -32,18 +61,6 @@ export function DefineThemeProvider({ children }: DefineThemeProps) {
   //função que define a cor
   const newColor = colorsMatch.find(data => data.name === color)
 
-  //retornando todas as cores que tem match com o tema definido
-  const selectMatchs = themes.colors.map(data => {
-    const validateMatch = Object.values(data.match).map(data => data.includes(background) ? 1 : 0)
-    const validation = validateMatch.some(data => data === 1)
-
-    return {
-      ...data,
-      playMatch: validation,
-    }
-  })
-
-  const selectMatchsColor = selectMatchs.filter(data => data.playMatch === true)
 
   //definindo o tema
   useEffect(() => {
@@ -62,8 +79,6 @@ export function DefineThemeProvider({ children }: DefineThemeProps) {
 
   }, [background])
 
-
-
   //definindo as cores no click
   useEffect(() => {
     setTheme({
@@ -75,7 +90,18 @@ export function DefineThemeProvider({ children }: DefineThemeProps) {
 
   //definindo as cores que tem match com o tema
   useEffect(() => {
+    //retornando todas as cores que tem match com o tema definido
+    const selectMatchs = themes.colors.map(data => {
+      const validateMatch = Object.values(data.match).map(data => data.includes(background) ? 1 : 0)
+      const validation = validateMatch.some(data => data === 1)
 
+      return {
+        ...data,
+        playMatch: validation,
+      }
+    })
+
+    const selectMatchsColor = selectMatchs.filter(data => data.playMatch === true)
     setColorsMatch(selectMatchsColor)
 
   }, [background])
