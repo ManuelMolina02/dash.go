@@ -1,4 +1,4 @@
-import { Box, Flex, ScaleFade, SimpleGrid, Text, theme } from "@chakra-ui/react";
+import { Box, Button, Flex, ScaleFade, SimpleGrid, Text, theme } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import { Header } from "../components/Header";
 import { Sidebar } from '../components/Sidebar'
@@ -6,6 +6,7 @@ import { ApexOptions } from 'apexcharts';
 import { useTheme } from "../contexts/DefineTheme";
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import { DrawerDetails } from "../components/DrawerDetails";
 
 
 
@@ -20,10 +21,11 @@ const series = [
 export default function Dashboard() {
 
 
-  const { theme, variablesTheme } = useTheme()
+  const { theme } = useTheme()
 
   //defina o tema no body
   const [renderAnimation, setRenderAnimation] = useState(false)
+  const [showDetail, setShowDetail] = useState(false)
 
   //variavel de atualização
   const [update, setUpdate] = useState('');
@@ -105,6 +107,10 @@ export default function Dashboard() {
 
   }
 
+  function handleDetail() {
+    setShowDetail(true)
+  }
+
   return (
     <>
       <Head>
@@ -118,13 +124,17 @@ export default function Dashboard() {
 
           <ScaleFade in={renderAnimation} initialScale={.8} unmountOnExit  >
             <SimpleGrid w={'82vw'} maxW={'1220px'} flex='1' gap='4' minChildWidth={'420px'} alignContent='flex-start'>
-
+              {/* <Button colorScheme='blue' onClick={() => setShowDetail(true)}>
+                Open
+              </Button> */}
               <Box p={[6, 8]} pb='4' bg={theme.bg.secondary} borderRadius='8'>
+                {/* <DrawerDetails showDetail={showDetail} /> */}
                 <Text fontSize={'lg'} mb='4' color={theme.bg.contrastLight}>
                   Inscritos da semana
                 </Text>
                 <Chart key={update} options={options} series={series} type='area' height={160} />
               </Box>
+
 
               <Box p={[6, 8]} bg={theme.bg.secondary} borderRadius='8'>
                 <Text fontSize={'lg'} mb='4' color={theme.bg.contrastLight}>
