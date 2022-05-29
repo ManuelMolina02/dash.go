@@ -5,6 +5,7 @@ import { Sidebar } from '../components/Sidebar'
 import { ApexOptions } from 'apexcharts';
 import { useTheme } from "../contexts/DefineTheme";
 import { useEffect, useState } from "react";
+import Head from "next/head";
 
 
 
@@ -105,32 +106,36 @@ export default function Dashboard() {
   }
 
   return (
-    <Flex direction={'column'} h='100vh' bg={theme.bg.primary} color={theme.color.primary} transition={'.25s ease-in-out '}>
-      <Header />
+    <>
+      <Head>
+        <title>dashboard | dash.go</title>
+      </Head>
+      <Flex direction={'column'} h='100vh' bg={theme.bg.primary} color={theme.color.primary} transition={'.25s ease-in-out '}>
+        <Header />
 
-      <Flex w='100%' maxW={1480} my='6' mx='auto' px='6' >
-        <Sidebar />
+        <Flex w='100%' maxW={1480} my='6' mx='auto' px='6' >
+          <Sidebar />
 
-        <ScaleFade in={renderAnimation} initialScale={.8} unmountOnExit  >
-          <SimpleGrid w={'82vw'} maxW={'1220px'} flex='1' gap='4' minChildWidth={'420px'} alignContent='flex-start'>
+          <ScaleFade in={renderAnimation} initialScale={.8} unmountOnExit  >
+            <SimpleGrid w={'82vw'} maxW={'1220px'} flex='1' gap='4' minChildWidth={'420px'} alignContent='flex-start'>
 
-            <Box p={[6, 8]} pb='4' bg={theme.bg.secondary} borderRadius='8'>
-              <Text fontSize={'lg'} mb='4' color={theme.bg.contrastLight}>
-                Inscritos da semana
-              </Text>
-              <Chart key={update} options={options} series={series} type='area' height={160} />
-            </Box>
+              <Box p={[6, 8]} pb='4' bg={theme.bg.secondary} borderRadius='8'>
+                <Text fontSize={'lg'} mb='4' color={theme.bg.contrastLight}>
+                  Inscritos da semana
+                </Text>
+                <Chart key={update} options={options} series={series} type='area' height={160} />
+              </Box>
 
-            <Box p={[6, 8]} bg={theme.bg.secondary} borderRadius='8'>
-              <Text fontSize={'lg'} mb='4' color={theme.bg.contrastLight}>
-                Taxa de abertura
-              </Text>
-              <Chart key={update} options={options} series={series} type='area' height={160} />
-            </Box>
+              <Box p={[6, 8]} bg={theme.bg.secondary} borderRadius='8'>
+                <Text fontSize={'lg'} mb='4' color={theme.bg.contrastLight}>
+                  Taxa de abertura
+                </Text>
+                <Chart key={update} options={options} series={series} type='area' height={160} />
+              </Box>
 
-          </SimpleGrid>
-        </ScaleFade>
-      </Flex>
-    </Flex>
+            </SimpleGrid>
+          </ScaleFade>
+        </Flex>
+      </Flex></>
   )
 }

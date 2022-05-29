@@ -3,6 +3,7 @@ import { Input } from '../components/Form/Input'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useRouter } from 'next/router';
 import { useTheme } from '../contexts/DefineTheme';
+import Head from 'next/head';
 
 type SignInFormData = {
   email: string;
@@ -56,6 +57,11 @@ export default function SignIn() {
 
   return (
     <>
+
+      <Head>
+        <title>login | dash.go</title>
+      </Head>
+
       <Flex
         w='100vw' h='100vh'
         align='center' justify='center'
