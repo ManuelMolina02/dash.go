@@ -2,8 +2,7 @@ import { Accordion as ChakraAccordion, AccordionButton, AccordionIcon, Accordion
 import { BiPaintRoll } from "react-icons/bi";
 import { TiBrush } from 'react-icons/ti'
 import { useTheme } from "../../contexts/DefineTheme";
-import { RadioCards } from '../RadioCard'
-import { RadioCards2 } from "../RadioCard2";
+import { RadioCards } from "../RadioCard";
 
 
 export function Accordion() {
@@ -34,10 +33,13 @@ export function Accordion() {
         </AccordionButton>
 
         <AccordionPanel pb={4}>
+
           <RadioCards
             options={['dark', 'light', 'purple']}
             handleData={variablesTheme.setState.setBackground}
-            defaultValue={variablesTheme.state.background} />
+            defaultValue={variablesTheme.state.background}
+          />
+
         </AccordionPanel>
       </AccordionItem>
 
@@ -52,8 +54,6 @@ export function Accordion() {
         >
           <HStack flex='1' textAlign='left' >
             <Icon as={TiBrush} />
-
-
             <Text >
               Cor de Texto
             </Text>
@@ -67,7 +67,7 @@ export function Accordion() {
 
             theme.bg.name === 'dark' &&
 
-            <RadioCards2
+            <RadioCards
               options={options}
               handleData={variablesTheme.setState.setColor}
               defaultValue={'purple'}
@@ -77,7 +77,7 @@ export function Accordion() {
 
             theme.bg.name === 'light' &&
 
-            <RadioCards2
+            <RadioCards
               options={options}
               handleData={variablesTheme.setState.setColor}
               defaultValue={'purple'}
@@ -87,7 +87,7 @@ export function Accordion() {
           {
             theme.bg.name === 'purple' &&
 
-            <RadioCards2
+            <RadioCards
               options={options}
               handleData={variablesTheme.setState.setColor}
               defaultValue={'orange'}

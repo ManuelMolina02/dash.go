@@ -2,7 +2,7 @@ export const themes = {
   bg: [
     {
       name: "dark",
-      matchColors: ["purple", "green", "orange", "cyan", "teal", "pink"],
+      defaultColor: "purple",
 
       primary: "#181B23",
       secondary: "#1F2029",
@@ -14,7 +14,7 @@ export const themes = {
     },
     {
       name: "light",
-      matchColors: ["purple", "orange", "cyan"],
+      defaultColor: "purple",
 
       primary: "#e5e5e5",
       secondary: "#f7f7f7",
@@ -26,8 +26,7 @@ export const themes = {
     },
     {
       name: "purple",
-      defaultColor: "",
-      matchColors: ["green", "orange", "cyan", "teal"],
+      defaultColor: "orange",
 
       primary: "#44337A",
       secondary: "#322659",
@@ -35,7 +34,7 @@ export const themes = {
 
       contrastColor: "#F7FAFC",
       contrastLight: "#EDF2F7",
-      contrastTertiary: "#E2E8F0",
+      contrastDark: "#E2E8F0",
     },
   ],
   colors: [
@@ -45,11 +44,11 @@ export const themes = {
 
       primary: "#b794f4",
       secondary: "#9F7AEA",
-      tertiary: "#805AD5",
+      tertiary: "#6B46C1",
 
       contrastColor: "#F7FAFC",
       contrastLight: "#EDF2F7",
-      contrastTertiary: "#E2E8F0",
+      contrastDark: "#718096",
     },
     {
       name: "green",
@@ -61,19 +60,19 @@ export const themes = {
 
       contrastColor: "#F7FAFC",
       contrastLight: "#EDF2F7",
-      contrastTertiary: "#E2E8F0",
+      contrastDark: "#718096",
     },
     {
       name: "orange",
       match: ["dark", "light", "purple"],
 
       primary: "#ED8936",
-      secondary: "#DD6B20",
-      tertiary: "#C05621",
+      secondary: "#ef8641",
+      tertiary: "#e37b36",
 
       contrastColor: "#F7FAFC",
       contrastLight: "#EDF2F7",
-      contrastTertiary: "#E2E8F0",
+      contrastDark: "#718096",
     },
     {
       name: "cyan",
@@ -81,11 +80,11 @@ export const themes = {
 
       primary: "#00B5D8",
       secondary: "#0987A0",
-      tertiary: "#086F83",
+      tertiary: "#0987A0",
 
       contrastColor: "#F7FAFC",
       contrastLight: "#EDF2F7",
-      contrastTertiary: "#E2E8F0",
+      contrastDark: "#718096",
     },
     {
       name: "teal",
@@ -97,11 +96,11 @@ export const themes = {
 
       contrastColor: "#F7FAFC",
       contrastLight: "#EDF2F7",
-      contrastTertiary: "#E2E8F0",
+      contrastDark: "#718096",
     },
     {
       name: "pink",
-      match: ["dark"],
+      match: ["dark", "light"],
 
       primary: "#ED64A6",
       secondary: "#D53F8C",
@@ -109,7 +108,7 @@ export const themes = {
 
       contrastColor: "#F7FAFC",
       contrastLight: "#EDF2F7",
-      contrastTertiary: "#E2E8F0",
+      contrastDark: "#718096",
     },
   ],
 };

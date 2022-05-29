@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, Input as ChakraInput, InputProps as ChakraInputProps } from "@chakra-ui/react"
+import { filter, FormControl, FormLabel, Input as ChakraInput, InputProps as ChakraInputProps } from "@chakra-ui/react"
 import { forwardRef } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { useTheme } from "../../contexts/DefineTheme";
@@ -23,11 +23,12 @@ export function Input({ name, label, valueInput, ...rest }: InputProps) {
       <ChakraInput
         name={name}
         id={name}
-        focusBorderColor='purple.500'
         bgColor={theme.bg.primary}
+        _focus={{ bg: theme.bg.primary, borderColor: theme.color.secondary }}
+
 
         variant={'filled'}
-        _hover={{ bg: 'gray.900' }}
+        _hover={{ filter: 'brightness(90%)' }}
         size='lg'
         {...valueInput(name)}
         {...rest}

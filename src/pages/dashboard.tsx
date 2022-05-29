@@ -53,8 +53,10 @@ export default function Dashboard() {
     },
 
     dataLabels: {
+
+      //enabled: false,
       style: {
-        colors: [theme.color.contrastDark],
+        colors: ['#718096'],
       },
 
     },

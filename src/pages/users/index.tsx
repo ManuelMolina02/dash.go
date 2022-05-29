@@ -23,8 +23,8 @@ export default function UserList() {
     setRenderAnimation(true)
   }, [])
 
-
   const { theme } = useTheme()
+
 
   return (
     <Box bg={theme.bg.primary} color={theme.color.primary} h={'100vh'} transition={'.25s ease-in-out '}>
@@ -48,7 +48,7 @@ export default function UserList() {
                   as='a' size='sm' fontSize={'sm'}
                   bg={theme.color.tertiary}
                   _hover={{
-                    filter: 'brightness(.9)',
+                    filter: 'brightness(1.2)',
                   }}
 
                   color={theme.color.contrastLight}
@@ -65,11 +65,11 @@ export default function UserList() {
               <Thead >
                 <Tr>
                   <Th px={[4, 4, 6]} color='gray.300' width={'8'}>
-                    <Checkbox colorScheme={'purple'} />
+                    <Checkbox colorScheme={theme.color.name} />
                   </Th>
 
-                  <Th color={theme.color.contrastDark}>Usuário</Th>
-                  {isWideVersion && <Th color={theme.color.contrastDark}>Data de cadastro</Th>}
+                  <Th color={theme.bg.contrastLight}>Usuário</Th>
+                  {isWideVersion && <Th color={theme.bg.contrastLight}>Data de cadastro</Th>}
                   <Th></Th>
 
                 </Tr>
@@ -78,7 +78,7 @@ export default function UserList() {
               <Tbody overflowY={'hidden'} maxHeight={'300px'}>
                 <Tr>
                   <Td px={[4, 4, 6]}>
-                    <Checkbox colorScheme={'purple'} />
+                    <Checkbox colorScheme={theme.color.name} />
                   </Td>
 
                   <Td>
@@ -96,17 +96,17 @@ export default function UserList() {
                   {isWideVersion && <Td> 22 de Maio, 2022 </Td>}
 
                   <Td>
-                    <HStack spacing={[4, 6]}>
+                    <HStack spacing={[4]}>
                       <Button
                         as='a' size='sm' pe='0' maxW={'20px'}
-                        fontSize={'sm'} colorScheme='blue' cursor={'pointer'}
+                        fontSize={'sm'} color={'gray.50'} bg={theme.color.tertiary} cursor={'pointer'} _hover={{ bg: `${theme.color.name}.500` }}
                         leftIcon={<Icon as={RiPencilLine} fontSize='20' />}
                       />
 
                       <Button
                         as='a' size='sm' ml='4' pe='1' maxW={'20px'}
                         alignContent={'center'} cursor={'pointer'}
-                        fontSize={'sm'} colorScheme='whiteAlpha'
+                        fontSize={'sm'} colorScheme={theme.bg.name !== 'light' ? 'whiteAlpha' : 'blackAlpha'}
                         leftIcon={<Icon as={HiOutlineTrash} fontSize='20' />}
                       />
                     </HStack>
@@ -116,7 +116,7 @@ export default function UserList() {
 
                 <Tr>
                   <Td px={[4, 4, 6]}>
-                    <Checkbox colorScheme={'purple'} />
+                    <Checkbox colorScheme={theme.color.name} />
                   </Td>
 
                   <Td>
@@ -134,17 +134,17 @@ export default function UserList() {
                   {isWideVersion && <Td> 22 de Maio, 2022 </Td>}
 
                   <Td>
-                    <HStack spacing={[4, 6]}>
+                    <HStack spacing={[4]}>
                       <Button
                         as='a' size='sm' pe='0' maxW={'20px'}
-                        fontSize={'sm'} colorScheme='blue' cursor={'pointer'}
+                        fontSize={'sm'} color={'gray.50'} bg={theme.color.tertiary} cursor={'pointer'} _hover={{ bg: `${theme.color.name}.500` }}
                         leftIcon={<Icon as={RiPencilLine} fontSize='20' />}
                       />
 
                       <Button
                         as='a' size='sm' ml='4' pe='1' maxW={'20px'}
                         alignContent={'center'} cursor={'pointer'}
-                        fontSize={'sm'} colorScheme='whiteAlpha'
+                        fontSize={'sm'} colorScheme={theme.bg.name !== 'light' ? 'whiteAlpha' : 'blackAlpha'}
                         leftIcon={<Icon as={HiOutlineTrash} fontSize='20' />}
                       />
                     </HStack>
@@ -154,7 +154,7 @@ export default function UserList() {
 
                 <Tr>
                   <Td px={[4, 4, 6]}>
-                    <Checkbox colorScheme={'purple'} />
+                    <Checkbox colorScheme={theme.color.name} />
                   </Td>
 
                   <Td>
@@ -172,17 +172,17 @@ export default function UserList() {
                   {isWideVersion && <Td> 22 de Maio, 2022 </Td>}
 
                   <Td>
-                    <HStack spacing={[4, 6]}>
+                    <HStack spacing={[4]}>
                       <Button
                         as='a' size='sm' pe='0' maxW={'20px'}
-                        fontSize={'sm'} colorScheme='blue' cursor={'pointer'}
+                        fontSize={'sm'} color={'gray.50'} bg={theme.color.tertiary} cursor={'pointer'} _hover={{ bg: `${theme.color.name}.500` }}
                         leftIcon={<Icon as={RiPencilLine} fontSize='20' />}
                       />
 
                       <Button
                         as='a' size='sm' ml='4' pe='1' maxW={'20px'}
                         alignContent={'center'} cursor={'pointer'}
-                        fontSize={'sm'} colorScheme='whiteAlpha'
+                        fontSize={'sm'} colorScheme={theme.bg.name !== 'light' ? 'whiteAlpha' : 'blackAlpha'}
                         leftIcon={<Icon as={HiOutlineTrash} fontSize='20' />}
                       />
                     </HStack>
@@ -191,7 +191,7 @@ export default function UserList() {
                 </Tr>
                 <Tr>
                   <Td px={[4, 4, 6]}>
-                    <Checkbox colorScheme={'purple'} />
+                    <Checkbox colorScheme={theme.color.name} />
                   </Td>
 
                   <Td>
@@ -209,17 +209,17 @@ export default function UserList() {
                   {isWideVersion && <Td> 22 de Maio, 2022 </Td>}
 
                   <Td>
-                    <HStack spacing={[4, 6]}>
+                    <HStack spacing={[4]}>
                       <Button
                         as='a' size='sm' pe='0' maxW={'20px'}
-                        fontSize={'sm'} colorScheme='blue' cursor={'pointer'}
+                        fontSize={'sm'} color={'gray.50'} bg={theme.color.tertiary} cursor={'pointer'} _hover={{ bg: `${theme.color.name}.500` }}
                         leftIcon={<Icon as={RiPencilLine} fontSize='20' />}
                       />
 
                       <Button
                         as='a' size='sm' ml='4' pe='1' maxW={'20px'}
                         alignContent={'center'} cursor={'pointer'}
-                        fontSize={'sm'} colorScheme='whiteAlpha'
+                        fontSize={'sm'} colorScheme={theme.bg.name !== 'light' ? 'whiteAlpha' : 'blackAlpha'}
                         leftIcon={<Icon as={HiOutlineTrash} fontSize='20' />}
                       />
                     </HStack>

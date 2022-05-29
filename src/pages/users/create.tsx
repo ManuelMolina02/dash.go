@@ -98,7 +98,7 @@ export default function CreateUser() {
             h={'80vh'}
             maxW={'1220px'}
           >
-            <Heading color={theme.bg.contrastLight} size='lg' fontWeight='normal'>
+            <Heading colorScheme={theme.color.name} size='lg' fontWeight='normal'>
               Criar novo usuário
             </Heading>
 
@@ -120,7 +120,7 @@ export default function CreateUser() {
               <HStack spacing={'4'}>
 
                 <Link href={'/users'} passHref>
-                  <Button as='a' colorScheme={'whiteAlpha'}>Cancelar</Button>
+                  <Button as='a' colorScheme={theme.bg.name !== 'light' ? 'whiteAlpha' : 'blackAlpha'}>Cancelar</Button>
                 </Link>
 
                 <Button color={theme.color.contrastLight} bg={theme.color.tertiary} _hover={{ filter: 'brightness(1.2)' }} isLoading={formState.isSubmitting} type='submit'>Salvar</Button>

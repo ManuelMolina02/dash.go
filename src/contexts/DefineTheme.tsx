@@ -58,7 +58,6 @@ export function DefineThemeProvider({ children }: DefineThemeProps) {
         color: themes.colors[2],
       })
     }
-
     setColor('')
 
   }, [background])

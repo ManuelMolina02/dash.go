@@ -41,9 +41,7 @@ export function PaginationItem({ isCurrent = false, number }: PaginationItemProp
       bg={theme.bg.primary}
       color={theme.bg.contrastLight}
       _hover={{
-        filter: 'brightness(1.2)',
-        backgroundColor: theme.color.tertiary,
-        color: theme.bg.contrastDark,
+        filter: theme.bg.name !== 'light' ? 'brightness(1.4)' : 'brightness(.9)',
 
       }}
     >
