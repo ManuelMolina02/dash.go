@@ -65,6 +65,8 @@ export default function SignIn() {
       <Flex
         w='100vw' h='100vh'
         align='center' justify='center'
+        bg={theme.bg.primary}
+        color={theme.color.primary}
       >
         <VStack
           as='form' width='100%' maxW={360} p={8} spacing={6}

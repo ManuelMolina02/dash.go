@@ -59,7 +59,7 @@ export default function Dashboard() {
 
       //enabled: false,
       style: {
-        colors: ['#718096'],
+        colors: [theme.color.tertiary],
       },
 
     },
@@ -116,10 +116,11 @@ export default function Dashboard() {
       <Head>
         <title>dashboard | dash.go</title>
       </Head>
-      <Flex direction={'column'} h='100vh' bg={theme.bg.primary} color={theme.color.primary} transition={'.25s ease-in-out '}>
+      <Flex direction={'column'} transition={'.25s ease-in-out '} bg={theme.bg.primary}
+        color={theme.color.primary} h={'100vh'}>
         <Header />
 
-        <Flex w='100%' maxW={1480} my='6' mx='auto' px='6' >
+        <Flex w='100%' maxW={1480} my='6' mx='auto' px='6'  >
           <Sidebar />
 
           <ScaleFade in={renderAnimation} initialScale={.8} unmountOnExit  >

@@ -3,10 +3,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../../components/Form/Input";
+import { useMutation } from "react-query";
 
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { useTheme } from "../../contexts/DefineTheme";
+import { api } from "../../services/api";
+import { queryClient } from "../../services/queryClient";
+import { useRouter } from "next/router";
 
 interface CreateUserFormData {
   name: string;
@@ -16,6 +20,26 @@ interface CreateUserFormData {
 }
 
 export default function CreateUser() {
+  const router = useRouter();
+  const createUser = useMutation(async (user: CreateUserFormData) => {
+    const response = await api.post('/users', {
+      user: {
+        ...user,
+        created_at: new Date(),
+      }
+    })
+
+    return response.data.user
+  }, {
+    onSuccess: () => {
+      toast({
+        title: `Usuário criado com sucesso!`,
+        status: 'success',
+      })
+
+      queryClient.invalidateQueries('users')
+    }
+  })
   const { register, handleSubmit, formState } = useForm()
 
   const toast = useToast({
@@ -29,7 +53,8 @@ export default function CreateUser() {
   })
 
   const handleCreateUser: SubmitHandler<CreateUserFormData> = async (values, event) => {
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    // await new Promise(resolve => setTimeout(resolve, 2000))
+
 
     let erros = []
 
@@ -65,13 +90,19 @@ export default function CreateUser() {
       return
     }
 
-    if (values.password !== values.password_confirmation) {
+    if (values.password === values.password_confirmation) {
       toast({
         title: `As senhas não coincidem`,
         status: 'warning',
       })
       return
     }
+
+
+
+    await createUser.mutateAsync(values)
+
+    router.push('/users')
 
   }
 
@@ -84,7 +115,8 @@ export default function CreateUser() {
   }, [])
 
   return (
-    <Box bg={theme.bg.primary} h='100vh' transition={'.25s ease-in-out '}>
+    <Box transition={'.25s ease-in-out '} bg={theme.bg.primary}
+      color={theme.color.contrastLight} h={'100vh'}>
       <Header />
       <Flex w='100%' maxW={1480} mt='6' mx='auto' px='6' >
         <Sidebar />

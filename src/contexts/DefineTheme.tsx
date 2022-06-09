@@ -54,13 +54,11 @@ export function DefineThemeProvider({ children }: DefineThemeProps) {
     color: themes.colors[0],
   });
 
-
   //função que define o tema
   const newTheme = themes.bg.find((item) => item.name === background);
 
   //função que define a cor
   const newColor = colorsMatch.find(data => data.name === color)
-
 
   //definindo o tema
   useEffect(() => {

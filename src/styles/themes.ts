@@ -52,7 +52,7 @@ export const themes = {
     },
     {
       name: "green",
-      match: ["dark"],
+      match: ["dark", "light"],
 
       primary: "#48BB78",
       secondary: "#38A169",

@@ -22,6 +22,7 @@ export function Header() {
       w='100%' h='20' maxW={1480}
       mx='auto' px={6}
       pt={5}
+
     >
       {
         !isWideVersion && (

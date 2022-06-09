@@ -4,9 +4,10 @@ import { useTheme } from "../../contexts/DefineTheme";
 interface PaginationItemProps {
   number: number
   isCurrent?: boolean;
+  onPageChange: (page: number) => void;
 }
 
-export function PaginationItem({ isCurrent = false, number }: PaginationItemProps) {
+export function PaginationItem({ isCurrent = false, number, onPageChange }: PaginationItemProps) {
 
   const { theme } = useTheme();
 
@@ -44,6 +45,8 @@ export function PaginationItem({ isCurrent = false, number }: PaginationItemProp
         filter: theme.bg.name !== 'light' ? 'brightness(1.4)' : 'brightness(.9)',
 
       }}
+
+      onClick={() => onPageChange(number)}
     >
       {number}
     </Button>
